@@ -4,12 +4,16 @@ output:
   html_document:
     keep_md: true
 ---
-
+```{r setup}
+  library(knitr)
+  opts_knit$set(root.dir=normalizePath('./'))
+  opts_chunk$set(fig.path = "./figures/") # corrected path
+```
 
 ## Loading and preprocessing the data
 ```{r}
 getData <- function() {
-        partData <- read.table("activity.csv", sep = ",", header = TRUE)
+        partData <- read.table("./activity.csv", sep = ",", header = TRUE)
         #Add the date column
         partData$date <- as.Date(partData$date, format="%Y-%m-%d")
         #Add the day column
@@ -82,7 +86,7 @@ The following chart shows the average number of steps taken per interval through
 averageDailyActivity(getData())
 ```
 
-## Imputing missing values
+## Inputing missing values
 ```{r}
 inputMissingValues <- function(data) {
         #replace all the NAs with zero

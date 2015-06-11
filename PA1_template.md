@@ -1,11 +1,16 @@
 # Reproducible Research: Peer Assessment 1
 
+```r
+  library(knitr)
+  opts_knit$set(root.dir=normalizePath('./'))
+  opts_chunk$set(fig.path = "./figures/") # corrected path
+```
 
 ## Loading and preprocessing the data
 
 ```r
 getData <- function() {
-        partData <- read.table("activity.csv", sep = ",", header = TRUE)
+        partData <- read.table("./activity.csv", sep = ",", header = TRUE)
         #Add the date column
         partData$date <- as.Date(partData$date, format="%Y-%m-%d")
         #Add the day column
@@ -43,7 +48,7 @@ The following barchart shows the total number of steps taken per day
 ## Loading required package: ggplot2
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![](./figures/unnamed-chunk-3-1.png) 
 
 ## What is the mean and median of the number of steps taken per day
 
@@ -143,13 +148,13 @@ averageDailyActivity <- function(data) {
 ```
 
 The following chart shows the average number of steps taken per interval throughout a typical day
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![](./figures/unnamed-chunk-7-1.png) 
 
 ```
 ## [1] "Interval with maximum average steps: 835"
 ```
 
-## Imputing missing values
+## Inputing missing values
 
 ```r
 inputMissingValues <- function(data) {
@@ -191,4 +196,4 @@ The following comparative charts show the difference in number of steps on a wee
 ## Loading required package: lattice
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+![](./figures/unnamed-chunk-10-1.png) 
